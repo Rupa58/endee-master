@@ -1,0 +1,4 @@
+endee
+sentence-transformers
+numpy
+openai  # optional, only if using RAG

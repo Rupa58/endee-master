@@ -1,0 +1,4 @@
+Artificial Intelligence allows machines to simulate human intelligence.
+Machine learning is a subset of AI.
+Vector databases store embeddings for similarity search.
+Retrieval Augmented Generation combines search with language models.
