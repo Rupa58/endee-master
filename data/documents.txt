@@ -1,0 +1,4 @@
+Artificial Intelligence allows machines to simulate human intelligence.
+Machine learning is a subset of AI.
+Vector databases store embeddings for semantic search.
+RAG combines search with language models for better answers.

@@ -1,31 +1,30 @@
-from sentence_transformers import SentenceTransformer
-import numpy as np
+from flask import Flask, render_template, request
+from search import semantic_search  # Your semantic search function
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+# Initialize Flask app
+app = Flask(__name__)
 
-documents = [
-    "Artificial Intelligence allows machines to simulate human intelligence.",
-    "Machine learning is a subset of AI.",
-    "Vector databases store embeddings for similarity search.",
-    "Retrieval Augmented Generation combines search with language models."
-]
+# Homepage route — shows the form
+@app.route('/')
+def home():
+    return render_template("index.html")
 
-doc_vectors = model.encode(documents)
+# Route to handle form submission
+@app.route('/ask', methods=['POST'])
+def ask():
+    # Get the query from the form (not JSON)
+    query = request.form['query']
+    
+    # Call your semantic search function
+    results = semantic_search(query)
+    
+    # Join results to display as HTML
+    answer = "<br>".join(results)
+    
+    # Render the same template with answer
+    return render_template("index.html", answer=answer, query=query)
 
-def semantic_search(query):
-    query_vector = model.encode(query)
-    scores = np.dot(doc_vectors, query_vector)
-    best_match = np.argmax(scores)
-    return documents[best_match]
-
-print("AI Semantic Search")
-print("Type 'exit' to stop")
-
-while True:
-    question = input("Ask a question: ")
-
-    if question.lower() == "exit":
-        break
-
-    answer = semantic_search(question)
-    print("Answer:", answer)
+# Run the app
+if __name__ == "__main__":
+    print("Starting Flask app...")
+    app.run(debug=True)
