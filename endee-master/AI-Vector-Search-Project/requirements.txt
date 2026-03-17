@@ -1,4 +1,7 @@
+flask
 endee
 sentence-transformers
+openai
 numpy
-openai  # optional, only if using RAG
+scikit-learn
+torch

@@ -1,0 +1,7 @@
+flask
+endee
+sentence-transformers
+openai
+numpy
+scikit-learn
+torch
