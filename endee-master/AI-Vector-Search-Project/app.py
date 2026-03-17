@@ -3,6 +3,9 @@ from search import semantic_search  # Your semantic search function
 
 # Initialize Flask app
 app = Flask(__name__)
+@app.route('/')
+def home():
+    return "App is working 🚀"
 
 # Homepage route — shows the form
 @app.route('/')
